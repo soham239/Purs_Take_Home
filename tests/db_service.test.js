@@ -1,13 +1,13 @@
-const AWS = require('aws-sdk');
-const { createRDSDbService } = require('../dbService');
+const AWS = require("aws-sdk");
+const { createRDSDbService } = require("../dbService");
 
 // Mock AWS.RDSDataService
-jest.mock('aws-sdk', () => ({
+jest.mock("aws-sdk", () => ({
   RDSDataService: jest.fn(),
 }));
 
-describe('createRDSDbService', () => {
-  it('should return the same instance on consecutive calls', () => {
+describe("createRDSDbService", () => {
+  it("should return the same instance on consecutive calls", () => {
     // Call getInstance twice
     const firstInstance = createRDSDbService().getInstance();
     const secondInstance = createRDSDbService().getInstance();

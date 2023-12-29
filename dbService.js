@@ -1,15 +1,17 @@
-const AWS = require('aws-sdk');
+const AWS = require("aws-sdk");
 
 let dbInstance;
 
-// The singleton instance
+/**
+ * Create and manage a singleton instance of the AWS RDS DB service.
+ *
+ * @returns {Object} - Object with a method to get the singleton instance.
+ */
 const createRDSDbService = () => {
-  // Private methods or configuration
   const initialize = () => {
-    console.log('Initializing RDS DB service...');
+    console.log("Initializing RDS DB service...");
   };
 
-  // Public methods or properties
   return {
     getInstance: () => {
       if (!dbInstance) {
@@ -21,13 +23,25 @@ const createRDSDbService = () => {
   };
 };
 
+/**
+ * Get the parameters required for interacting with the RDS database.
+ *
+ * @param {string} sqlTransactionID - The ID of the SQL transaction.
+ * @returns {Object} - Object with the necessary parameters for database interaction.
+ */
 const getDBParams = (sqlTransactionID) => {
-    return {
-      database: process.env.DATABASE,
-      secretArn: process.env.SECRET_ARN,
-      resourceArn: process.env.CLUSTER_ARN,
-      transactionId: sqlTransactionID,
-    };
+  return {
+    database: process.env.DATABASE,
+    secretArn: process.env.SECRET_ARN,
+    resourceArn: process.env.CLUSTER_ARN,
+    transactionId: sqlTransactionID,
   };
+};
 
+/**
+ * Module for creating and managing the AWS RDS DB service instance and retrieving database parameters.
+ *
+ * @module dbService
+ * @exports {Object} - Object with functions related to the RDS DB service and database parameters.
+ */
 module.exports = { createRDSDbService, getDBParams };

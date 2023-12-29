@@ -35,6 +35,7 @@ const executeStandardPTOperations = async (
   sqlTransactionID
 ) => {
   try {
+    // Insert Payment to DB
     const ledgeEntries = [];
     const paymentID = generateRandomBinary(32);
     let ledgerEntryID = generateRandomBinary(32);
@@ -54,6 +55,7 @@ const executeStandardPTOperations = async (
     params.sql = constants.insertPaymentSQL;
     await RDS.executeStatement({ ...params }).promise();
 
+    // Additional query execution for fedNow payments
     // this is an additional step for processing fedNow payments
     if (
       userPurchaseInformation.paymentMethod === 0 &&
@@ -70,9 +72,11 @@ const executeStandardPTOperations = async (
       idObj.primaryFedNowPaymentID = fedNowPaymentID;
     }
 
+    // Insert Ledger Entry to DB
     params.sql = constants.insertLedgerEntrySQL;
     await RDS.executeStatement({ ...params }).promise();
 
+    // Insert Promo Ledger Entry to DB
     if (promotionInformation.promoAmount > 0) {
       ledgerEntryID = generateRandomBinary(32);
       ledgeEntries.push(ledgerEntryID);
@@ -111,9 +115,8 @@ const executeStandardPTOperations = async (
     idObj.pursTransactionID = pursTransactionID;
 
     return idObj;
-
   } catch (error) {
-    // Handle errors
+    // Handle errors as required
     console.error("Error occured during operation: ", error.message);
     throw error;
   }
