@@ -2,8 +2,15 @@
 
 ### Instructions to run
 
-Clone the repo to local and make sure you have node and npm installed. 
-Run the tests using a single command at the root folder location:
+Clone the repo to local and make sure you have node and npm installed.
+
+Install the necessary dependencies by running:
+
+```bash
+npm install
+```
+
+Then, run the tests using a single command at the root folder location:
 
 ```bash
 npm test
