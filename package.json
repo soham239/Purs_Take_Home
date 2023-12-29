@@ -1,0 +1,21 @@
+{
+    "name": "purs_take_home",
+    "version": "1.0.0",
+    "description": "Purs Take Home",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+      "test": "jest --coverage"
+    },
+    "devDependencies": {
+      "aws-sdk": "^2.1072.0",
+      "jest": "^27.0.4"
+    },
+    "jest": {
+      "testEnvironment": "node",
+      "transform": {
+        "^.+\\.js$": "babel-jest"
+      }
+    }
+  }
+  
