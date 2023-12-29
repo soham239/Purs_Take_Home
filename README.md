@@ -1,5 +1,15 @@
 # Purs_Take_Home
 
+### Instructions to run
+
+Clone the repo to local and make sure you have node and npm installed. 
+Run the tests using a single command at the root folder location:
+
+```bash
+npm test
+```
+
+The test coverage report will be displayed in the terminal.
 
 ### Major changes I made to the code
 
@@ -11,6 +21,8 @@
 - Utility function like generateRandomBinary has been moved to utils.js
 
 2. Unit Testing
+
+I have used ***JEST framework*** for unit testing the code.
 
 - DB connection creation and usage in a singleton manner is tested separately
 - The different success scenarios are tested by changing parameters like promoAmount, paymentMethod, etc.
